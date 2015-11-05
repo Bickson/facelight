@@ -3,6 +3,7 @@
 
 out/
 target/
+src/main/resources/META-INF/persistence.xml
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
