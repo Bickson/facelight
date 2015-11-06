@@ -19,11 +19,15 @@
             <h:graphicImage value="resources/images/facelight_logo.png" style="width: 100%;"/>
         </b:column>
         <b:column span="12" id="login_box">
+            <h:head>Registerform</h:head>
             <h:form>
-                <b:inputText>Användarnamn</b:inputText>
+                <b:inputText>Förnamn</b:inputText>
+                <b:inputText>Efternan</b:inputText>
+                <b:inputText>Email</b:inputText>
                 <b:inputSecret>Lösenord</b:inputSecret>
-                <b:button value="Login" look="primary" style="width:100%;"></b:button>
-                <h:link outcome="register">Register</h:link>
+                <b:inputSecret>Lösenord igen</b:inputSecret>
+                <b:button value="Register" look="primary" style="width:100%;"></b:button>
+                <h:link outcome="login">Back</h:link>
             </h:form>
         </b:column>
     </b:column>
