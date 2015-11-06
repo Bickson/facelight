@@ -3,9 +3,32 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-   <f:view>
-      <h:outputLabel value="Hello, world"/>
-   </f:view>
+    <h:outputStylesheet name="css/app.css" />
+    <h:head>
+        <title>BootsFaces Basic Page</title>
+    </h:head>
+    <h:body class="debugg">
+        <b:column span="12" id="topbar" style="border: 1px solid red;">
+            <h:graphicImage value="resources/images/facelight_logo.png" style="height: 100%;"/>
+            NAVBAR
+        </b:column>
+        <b:column span="2" id="sidebar" style="border: 1px solid red;">
+            SIDEBAR
+            <b:navbarLinks id="sidebar_buttons">
+                <b:navLink value="Vänner" href="#" iconAwesome="group"></b:navLink>
+                <b:navLink value="Link" href="#"></b:navLink>
+                <b:navLink value="Link" href="#"></b:navLink>
+            </b:navbarLinks>
+            <b:iconAwesome name="group" /> Vänner<br/>
+        </b:column>
+        <b:column span="8" id="content" style="border: 1px solid red;">
+            CONTENT
+        </b:column>
+        <b:column span="2" style="border: 1px solid red; height: calc(100% - 50px); ">
+            PADDING COL
+        </b:column>
+    </h:body>
 </html>
