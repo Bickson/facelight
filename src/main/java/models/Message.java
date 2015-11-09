@@ -2,30 +2,41 @@ package models;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by dario on 2015-11-04.
  */
 @Entity
-public class Message {
+@Table(name = "message")
+@Access(AccessType.FIELD)
+public class Message implements Serializable{
 
-    @NotNull
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @NotNull
+    @Column(nullable = false)
     private MessageType type;
 
+    @Column(nullable = true)
     private String subject;
 
-    @NotNull
+    @Column(nullable = false, length = 1000)
     private String content;
 
-    @NotNull
+    @Column(nullable = false)
+    //@Temporal(TemporalType.DATE)
     private Date createdAt;
 
+    @ManyToOne
+    @JoinColumn(name="receiverId", nullable=false, foreignKey = @ForeignKey(name = "FK_RECEIVER"))
+    private User receiver;
+
+    @ManyToOne
+    @JoinColumn(name="senderId", nullable=false, foreignKey = @ForeignKey(name = "FK_SENDER"))
+    private User sender;
 
     public int getId() {
         return id;
@@ -62,4 +73,17 @@ public class Message {
     public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
     }
+
+    public User getReceiver() { return receiver; }
+
+    public void setReceiver(User receiver){
+        this.receiver = receiver;
+    }
+
+    public User getSender() { return sender; }
+
+    public void setSender(User sender) {
+        this.sender = sender;
+    }
+
 }

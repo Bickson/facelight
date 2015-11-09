@@ -1,33 +1,59 @@
 package models;
 
+import org.hibernate.annotations.*;
+import org.hibernate.annotations.CascadeType;
+
 import javax.persistence.*;
+import javax.persistence.AccessType;
+import javax.persistence.Entity;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+import java.io.Serializable;
+import java.util.Collection;
 
 /**
  * Created by dario on 2015-11-04.
  */
 @Entity
 @Table(name = "user")
-public class User {
-    private int id;
-    private String email;
-    private String password;
-    private String firstName;
-    private String lastName;
-    private String nickname;
-    private String passwordConfirmation;
+@Access(AccessType.FIELD)
+@NamedQuery(
+        name="findAllUsersByName",
+        query="SELECT OBJECT(user) FROM User user WHERE user.firstName like :firstName"
+)
+public class User implements Serializable {
 
     @Id
-    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
+    @Column(unique = true, nullable = false)
+    private String email;
+
+    @Column(nullable = false)
+    private String password;
+
+    @Column(nullable = false)
+    private String passwordConfirmation;
+
+    @Column(nullable = false)
+    private String firstName;
+
+    private String lastName;
+
+    private String nickname;
+
+
+    @OneToMany(mappedBy="sender", targetEntity = Message.class, fetch = FetchType.EAGER)
+    private Collection<Message> sendMessages;
+
+    @OneToMany(mappedBy="receiver", targetEntity = Message.class, fetch = FetchType.EAGER)
+    private Collection<Message> receivedMessages;
+
     public int getId() {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    @Basic
-    @Column(name = "email")
     public String getEmail() {
         return email;
     }
@@ -36,8 +62,6 @@ public class User {
         this.email = email;
     }
 
-    @Basic
-    @Column(name = "password")
     public String getPassword() {
         return password;
     }
@@ -46,8 +70,6 @@ public class User {
         this.password = password;
     }
 
-    @Basic
-    @Column(name = "first_name")
     public String getFirstName() {
         return firstName;
     }
@@ -56,8 +78,6 @@ public class User {
         this.firstName = firstName;
     }
 
-    @Basic
-    @Column(name = "last_name")
     public String getLastName() {
         return lastName;
     }
@@ -66,8 +86,6 @@ public class User {
         this.lastName = lastName;
     }
 
-    @Basic
-    @Column(name = "nickname")
     public String getNickname() {
         return nickname;
     }
@@ -76,8 +94,6 @@ public class User {
         this.nickname = nickname;
     }
 
-    @Basic
-    @Column(name = "password_confirmation")
     public String getPasswordConfirmation() {
         return passwordConfirmation;
     }
@@ -86,4 +102,19 @@ public class User {
         this.passwordConfirmation = passwordConfirmation;
     }
 
+    public Collection<Message> getReceivedMessages() {
+        return receivedMessages;
+    }
+
+    public void setReceivedMessages(Collection<Message> receivedMessages) {
+        this.receivedMessages = receivedMessages;
+    }
+
+    public Collection<Message> getSendMessages() {
+        return sendMessages;
+    }
+
+    public void setSendMessages(Collection<Message> sendMessages) {
+        this.sendMessages = sendMessages;
+    }
 }
