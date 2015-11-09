@@ -20,9 +20,9 @@
         </b:column>
         <b:column span="12" id="login_box">
             <h:form>
-                <b:inputText>Användarnamn</b:inputText>
-                <b:inputSecret>Lösenord</b:inputSecret>
-                <b:button value="Login" look="primary" style="width:100%;"></b:button>
+                <b:inputText value="#{user.email}">Email</b:inputText>
+                <b:inputSecret value="#{user.password}">Lösenord</b:inputSecret>
+                <b:button value="Login" look="primary" style="width:100%;" action="#{user.login}"></b:button>
                 <h:link outcome="register">Register</h:link>
             </h:form>
         </b:column>
