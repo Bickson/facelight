@@ -21,12 +21,12 @@
         <b:column span="12" id="login_box">
             <h:head>Registerform</h:head>
             <h:form>
-                <b:inputText>Förnamn</b:inputText>
-                <b:inputText>Efternan</b:inputText>
-                <b:inputText>Email</b:inputText>
-                <b:inputSecret>Lösenord</b:inputSecret>
-                <b:inputSecret>Lösenord igen</b:inputSecret>
-                <b:button value="Register" look="primary" style="width:100%;"></b:button>
+                <b:inputText value="#{userFormBean.firstName}">Förnamn</b:inputText>
+                <b:inputText value="#{userFormBean.lastName}">Efternan</b:inputText>
+                <b:inputText value="#{userFormBean.email}">Email</b:inputText>
+                <b:inputSecret value="#{userFormBean.password}">Lösenord</b:inputSecret>
+                <b:inputSecret value="#{userFormBean.passwordConfirmation}">Lösenord igen</b:inputSecret>
+                <b:commandButton value="Register" look="primary" style="width:100%;" action="#{userFormBean.registerUser}"></b:commandButton>
                 <h:link outcome="login">Back</h:link>
             </h:form>
         </b:column>

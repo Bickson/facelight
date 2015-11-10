@@ -18,8 +18,12 @@ public class UserFormBean {
     private String password;
     private String passwordConfirmation;
 
-    public void registerUser(){
-        UserHandler.createUser(this);
+    public String registerUser(){
+
+        if(UserHandler.createUser(this) != null){
+            return "login";
+        }
+        return "register";
     }
 
     public String getFirstName() {
