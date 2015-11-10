@@ -1,6 +1,7 @@
 package handlers;
 
 import dao.MessageDAO;
+import controllers.UserFormBean;
 import dao.UserDAO;
 import models.Message;
 import models.User;
@@ -26,7 +27,14 @@ public class UserHandler {
         return null;
     }
 
-    public static User createUser(User user){
+    public static User createUser(UserFormBean userFormBean){
+
+        User user = new User();
+        user.setFirstName(userFormBean.getFirstName());
+        user.setLastName(userFormBean.getLastName());
+        user.setEmail(userFormBean.getEmail());
+        user.setPassword(userFormBean.getPassword());
+        user.setPasswordConfirmation(userFormBean.getPasswordConfirmation());
 
         return userDAO.create(user);
     }
