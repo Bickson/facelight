@@ -32,13 +32,13 @@ public class UserBean implements Serializable {
         return this.password;
     }
 
-    public String login(){
-        User user = UserHandler.authenticateUser();
+    public String doLogin(){
 
-        if(user){
-            return "index";
-        }
-        return "login";
+        User user = handlers.UserHandler.authenticateUser(this.email, this.password);
+        System.out.println("Trying to loggin!");
+
+        if(user != null) return "index";
+        return "register";
     }
 
 }

@@ -10,7 +10,7 @@
 <h:head>
     <title>Facelight</title>
 </h:head>
-<h:body class="debugg">
+<h:body>
     <b:column span="4">
         <p>#{request.getRequestURL().toString().split("/")[3]}</p>
     </b:column>
@@ -22,7 +22,7 @@
             <h:form>
                 <b:inputText value="#{user.email}">Email</b:inputText>
                 <b:inputSecret value="#{user.password}">Lösenord</b:inputSecret>
-                <b:button value="Login" look="primary" style="width:100%;" action="#{user.login}"></b:button>
+                <b:commandButton value="Login" look="primary" style="width:100%;" action="#{user.doLogin}"> </b:commandButton>
                 <h:link outcome="register">Register</h:link>
             </h:form>
         </b:column>
