@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:outputStylesheet name="css/app.css" />
+<h:head>
+    <title>Facelight</title>
+</h:head>
+<h:body>
+<b:column span="12" id="topbar">
+    <h:graphicImage value="resources/images/facelight_logo2.png" styleClass="bar_logo"/>
+</b:column>
+<b:column span="2" id="sidebar">
+    <b:column styleClass="profile_pic">
+        <h:graphicImage value="resources/images/profile.jpg" style="width: 100%;"/>
+        <b:navbarLinks id="sidebar_buttons" style="box-shadow: 0px 3px 3px #888888;">
+            <b:navLink value="Sök efter person" outcome="search" iconAwesome="search"></b:navLink>
+            <b:navLink value="Mina Vänner" href="#" iconAwesome="group"></b:navLink>
+            <b:navLink value="Mina Meddelande" href="#" iconAwesome="envelope"></b:navLink>
+            <b:navLink value="Nytt Meddelande" href="#" iconAwesome="pencil"></b:navLink>
+            <b:navLink value="Logga ut" href="#" iconAwesome="chevron-right" size="2x"></b:navLink>
+        </b:navbarLinks>
+    </b:column>
+</b:column>
+<b:column span="8" id="content" style="margin-top: 20px">
+    <h:form>
+        <b:column span="10">
+            <b:inputText value="#{search.query}"></b:inputText>
+        </b:column>
+        <b:column span="2">
+            <b:commandButton value="Sök" look="primary" style="width: 100%" action="#{search.search}"></b:commandButton>
+        </b:column>
+    </h:form>
+    <b:column span="10">
+        <c:forEach var="name" items="#{search.users}">
+            <b:column span="12" styleClass="card">
+                <b:column span="12">
+                    <b:column span="1" style=" margin-left: -15px;">
+                        <h:graphicImage value="resources/images/friend_logo.png" style="width: 100%;"/>
+                    </b:column>
+                    <b:column span="1">
+                        <h:outputText value="Name:" styleClass="search_card_label"></h:outputText>
+                    </b:column>
+                    <b:column span="8">
+                        <h:outputText value="#{name}" styleClass="card_from"></h:outputText>
+                    </b:column>
+                    <b:column span="1">
+                        <b:button outcome="index" value="View" look="primary" size="xs" style="margin-bottom:-5px; width: 100%"></b:button>
+                    </b:column>
+                    <b:column span="1">
+                        <b:button outcome="index" value="+" look="success" size="xs" style="margin-bottom:-5px; width: 100%"></b:button>
+                    </b:column>
+                </b:column>
+            </b:column>
+        </c:forEach>
+    </b:column>
+</b:column>
+    <b:column span="2" styleClass="padding_col">
+        <h:outputText value="Search" styleClass="description"></h:outputText>
+        <!-- PADDING COLUMN -->
+    </b:column>
+</h:body>
+
+</html>

@@ -4,6 +4,9 @@ import controllers.UserFormBean;
 import dao.UserDAO;
 import models.User;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 /**
  * Created by dario on 2015-11-09.
  */
@@ -27,4 +30,9 @@ public class UserHandler {
 
         return userDAO.create(user);
     }
+
+    public static Collection getUserByName(String query){
+        return userDAO.listUserByName(query);
+    }
+
 }
