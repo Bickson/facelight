@@ -17,6 +17,9 @@ public class Login {
     @ManagedProperty(value="#{loginForm}")
     private LoginForm loginForm;
 
+    @ManagedProperty(value="#{wallBean}")
+    private WallBean wallBean;
+
     public LoginForm getLoginForm() {
         return loginForm;
     }
@@ -26,10 +29,23 @@ public class Login {
     }
 
     public String doLogin(){
-        User user = handlers.UserHandler.authenticateUser(loginForm.getEmail(), loginForm.getPassword());
+        /*wallBean = handlers.UserHandler.authenticateUser(loginForm.getEmail(), loginForm.getPassword());
         System.out.println("Trying to loggin!");
-
-        if(user != null) return "index";
+        if(wallBean != null){
+            System.out.println("-----USER HANDLER RETURNED: ");
+            System.out.println("-----MESSAGES: " + wallBean.getMessages().size());
+            System.out.println("-----CURRENT USER: " + wallBean.getCurrentUser().getFirstName());
+            System.out.println("-----FIRST MESSAGE FROM: " + wallBean.getMessages().get(0).getSender().getFirstName());
+            return "index";
+        }*/
         return "register";
+    }
+
+    public WallBean getWallBean() {
+        return wallBean;
+    }
+
+    public void setWallBean(WallBean wallBean) {
+        this.wallBean = wallBean;
     }
 }

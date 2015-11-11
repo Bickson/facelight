@@ -1,28 +1,23 @@
 package controllers;
 
 /**
- * Created by johan on 10/11/15.
+ * Created by dario on 2015-11-11.
  */
-public class UserBean {
+public class UserViewModel {
 
     private String firstName;
     private String lastName;
-    private int Id;
 
-    public UserBean(){
+    public UserViewModel(){
     }
 
-    public UserBean(String firstName, String lastName){
+    public UserViewModel(String firstName, String lastName){
         this.firstName = firstName;
         this.lastName = lastName;
     }
 
-    public int getId() {
-        return Id;
-    }
-
-    public void setId(int id) {
-        Id = id;
+    public String getName(){
+        return firstName + " " + lastName;
     }
 
     public String getLastName() {
@@ -40,10 +35,5 @@ public class UserBean {
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
-
-    public String getName(){
-        return firstName + " " + lastName;
-    }
-
 
 }
