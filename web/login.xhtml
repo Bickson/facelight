@@ -22,7 +22,7 @@
             <h:form>
                 <b:inputText value="#{loginForm.email}">Email</b:inputText>
                 <b:inputSecret value="#{loginForm.password}">Lösenord</b:inputSecret>
-                <b:commandButton value="Login" look="primary" style="width:100%;" action="#{login.doLogin}"> </b:commandButton>
+                <b:commandButton value="Login" look="primary" style="width:100%;" action="#{userController.doLogin}"> </b:commandButton>
                 <h:link outcome="register">Register</h:link>
             </h:form>
         </b:column>
