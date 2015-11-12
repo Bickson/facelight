@@ -1,35 +1,20 @@
 package controllers;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.RequestScoped;
+import java.util.ArrayList;
 
 /**
  * Created by johan on 10/11/15.
  */
-@ManagedBean
-@RequestScoped
 public class WallBean {
 
-    @ManagedProperty(value="UserBean")
-    private UserBean user;
+    private ArrayList<MessageViewModel> messages;
 
-    @ManagedProperty(value="MessageBean")
-    private MessageBean[] messages;
-
-    public UserBean getUser() {
-        return user;
-    }
-
-    public void setUser(UserBean user) {
-        this.user = user;
-    }
-
-    public MessageBean[] getMessages() {
+    public ArrayList<MessageViewModel> getMessages()
+    {
         return messages;
     }
 
-    public void setMessages(MessageBean[] messages) {
+    public void setMessages(ArrayList<MessageViewModel> messages) {
         this.messages = messages;
     }
 

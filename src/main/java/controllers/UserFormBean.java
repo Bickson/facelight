@@ -4,12 +4,13 @@ import handlers.UserHandler;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 
 /**
  * Created by johan on 10/11/15.
  */
 @ManagedBean
-@RequestScoped
+@SessionScoped
 public class UserFormBean {
 
     private String firstName;

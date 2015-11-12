@@ -72,12 +72,12 @@ public class UserTest {
     public void listUsersByName(){
         System.out.println("---------------LIST_USERS_BY_NAME--------------------");
         //Create user and save
-        User otherUser = userDAO.create(UserFactory.createUser("salomon@email.com", "mate"));
+        User otherUser = userDAO.create(UserFactory.createUser("salomon@email.com", "tate"));
 
         //Create user and save
-        User otherUser1 = userDAO.create(UserFactory.createUser("salo@email.com", "matti"));
+        User otherUser1 = userDAO.create(UserFactory.createUser("salo@email.com", "tatti"));
 
-        Collection users = userDAO.listUserByName("te");
+        Collection users = userDAO.listUserByName("ta");
         Assert.assertEquals(2,users.size());
 
         users = userDAO.listUserByName("tt");
