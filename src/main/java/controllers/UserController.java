@@ -1,57 +1,41 @@
 package controllers;
 
-import handlers.MessageHandler;
+import forms.UserForm;
 import handlers.UserHandler;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.SessionScoped;
 
 /**
  * Created by dario on 2015-11-11.
  */
 @ManagedBean
-@SessionScoped
 public class UserController {
 
-    @ManagedProperty(value="#{loginForm}")
-    private LoginForm loginForm;
-
-    private UserBean currentUser;
-
-    private WallBean wallBean;
+    @ManagedProperty(value="#{userForm}")
+    private UserForm userForm;
 
     public UserController(){
-        this.wallBean = new WallBean();
-        this.currentUser = new UserBean();
+
     }
 
-    public LoginForm getLoginForm() {
-        return loginForm;
+
+    public UserForm getUserForm() {
+        return userForm;
     }
 
-    public void setLoginForm(LoginForm loginForm) {
-        this.loginForm = loginForm;
+    public void setUserForm(UserForm userForm) {
+        this.userForm = userForm;
     }
 
-    public String doLogin(){
-        currentUser = UserHandler.authenticateUser(loginForm.getEmail(), loginForm.getPassword());
-        if(currentUser != null){
-            wallBean.setMessages(MessageHandler.getAllMessages(currentUser.getId()));
-            return "index";
+
+    //Methods
+    public String registerUser(){
+
+        if(UserHandler.createUser(userForm) != null){
+            return "login";
         }
         return "register";
     }
 
-    public UserBean getCurrentUser() {
-        return currentUser;
-    }
-
-    public void setCurrentUser(UserBean currentUser) {
-        this.currentUser = currentUser;
-    }
-
-    public WallBean getWallBean() {
-        return wallBean;
-    }
 }

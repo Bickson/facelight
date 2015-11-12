@@ -1,7 +1,7 @@
 package handlers;
 
-import controllers.MessageViewModel;
-import controllers.UserViewModel;
+import ViewModels.MessageViewModel;
+import ViewModels.UserViewModel;
 import dao.MessageDAO;
 import models.Message;
 
@@ -28,6 +28,12 @@ public class MessageHandler {
             addMessageToMessageBean(userMessages, m);
         }
         return userMessages;
+    }
+
+    public static boolean createMessage(){
+
+
+        return false;
     }
 
     private static void addMessageToMessageBean(ArrayList<MessageViewModel> userMessages, Message m){

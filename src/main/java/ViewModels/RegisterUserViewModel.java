@@ -1,31 +1,15 @@
-package controllers;
-
-import handlers.UserHandler;
-
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
-import javax.faces.bean.SessionScoped;
+package ViewModels;
 
 /**
- * Created by johan on 10/11/15.
+ * Created by dario on 2015-11-12.
  */
-@ManagedBean
-@SessionScoped
-public class UserFormBean {
+public class RegisterUserViewModel {
 
     private String firstName;
     private String LastName;
     private String email;
     private String password;
     private String passwordConfirmation;
-
-    public String registerUser(){
-
-        if(UserHandler.createUser(this) != null){
-            return "login";
-        }
-        return "register";
-    }
 
     public String getFirstName() {
         return firstName;
@@ -66,5 +50,4 @@ public class UserFormBean {
     public void setPasswordConfirmation(String passwordConfirmation) {
         this.passwordConfirmation = passwordConfirmation;
     }
-
 }

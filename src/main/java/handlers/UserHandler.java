@@ -1,9 +1,8 @@
 package handlers;
 
-import controllers.*;
-import dao.MessageDAO;
+import ViewModels.UserViewModel;
 import dao.UserDAO;
-import models.Message;
+import forms.UserForm;
 import models.User;
 
 import java.util.ArrayList;
@@ -16,63 +15,30 @@ public class UserHandler {
 
     private static UserDAO userDAO = new UserDAO();
 
-    public static UserBean authenticateUser(String email, String password){
-        //return user info
-        //WallBean wallBean = new WallBean();
+    public static UserViewModel authenticateUser(String email, String password){
         if(email.equals(null) || password.equals(null)){
             return null;
         }
-        UserBean userBean = new UserBean();
+        UserViewModel userViewModel = new UserViewModel();
         User user = userDAO.authenticateUser(email,password);
         if(user != null){
             //create userBean
-            userBean.setId(user.getId());
-            userBean.setFirstName(user.getFirstName());
-            userBean.setLastName(user.getLastName());
+            userViewModel.setId(user.getId());
+            userViewModel.setFirstName(user.getFirstName());
+            userViewModel.setLastName(user.getLastName());
 
-            /*//create session user
-            UserBean userBean = new UserBean(user.getFirstName(), user.getLastName());
-            MessageDAO messageDAO = new MessageDAO();
-            List<Message> receivedMessages = (List<Message>)messageDAO.getReceivedMessages(user.getId());
-            List<Message> sendMessages = (List<Message>)messageDAO.getSendMessages(user.getId());
-            ArrayList<MessageViewModel> userMessages = new ArrayList<>();
-
-            for (Message m: receivedMessages){
-                addMessageToMessageBean(userMessages, m);
-            }
-            for (Message m: sendMessages){
-                addMessageToMessageBean(userMessages, m);
-            }
-
-            wallBean.setMessages(userMessages);
-            wallBean.setCurrentUser(userBean);
-            System.out.println("WALLBEAN MESSAGE SIZE:  " + wallBean.getMessages().size());*/
         }
-        return userBean;
+        return userViewModel;
     }
 
-/*    private static void addMessageToMessageBean(ArrayList<MessageViewModel> userMessages, Message m){
-        MessageViewModel message = new MessageViewModel();
-        UserViewModel sender = new UserViewModel(m.getSender().getFirstName(), m.getSender().getLastName());
-        UserViewModel receiver = new UserViewModel(m.getReceiver().getFirstName(), m.getReceiver().getLastName());
-
-        message.setType(m.getType());
-        message.setSubject(m.getSubject());
-        message.setContent(m.getContent());
-        message.setReceiver(receiver);
-        message.setSender(sender);
-        System.out.println("MESSAGE FROM SAVE TO ARRAY: " + m.getSender().getFirstName());
-        userMessages.add(message);
-    }*/
-
-    public static User createUser(UserFormBean userFormBean){
+    public static User createUser(UserForm userForm){
 
         User user = new User();
-        user.setFirstName(userFormBean.getFirstName());
-        user.setLastName(userFormBean.getLastName());
-        user.setEmail(userFormBean.getEmail());
-        user.setPassword(userFormBean.getPassword());
-        user.setPasswordConfirmation(userFormBean.getPasswordConfirmation());
+        user.setFirstName(userForm.getFirstName());
+        user.setLastName(userForm.getLastName());
+        user.setEmail(userForm.getEmail());
+        user.setPassword(userForm.getPassword());
+        user.setPasswordConfirmation(userForm.getPasswordConfirmation());
 
         return userDAO.create(user);
     }
