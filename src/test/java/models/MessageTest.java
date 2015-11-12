@@ -82,6 +82,11 @@ public class MessageTest {
     }
 
     @Test
+    public void createValidMessage(){
+
+    }
+
+    @Test
     public void getReceivedMessages(){
         //send a message 1
         message.setSender(sender);

@@ -1,4 +1,4 @@
-package controllers;
+package ViewModels;
 
 import models.MessageType;
 

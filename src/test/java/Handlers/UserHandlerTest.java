@@ -1,16 +1,12 @@
 package Handlers;
 
-import controllers.MessageBean;
-import controllers.WallBean;
 import dao.MessageDAO;
 import dao.UserDAO;
 import factories.MessageFactory;
 import factories.UserFactory;
-import handlers.UserHandler;
 import models.Message;
 import models.User;
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -48,27 +44,7 @@ public class UserHandlerTest {
 
     @Test
     public void authenticateUser(){
-        /*//send a message 1
-        message.setSender(sender);
-        message.setReceiver(receiver);
-        messages.add(messageDAO.create(message));
 
-        //send a message 2
-        Message msg2 = MessageFactory.createMessage();
-        msg2.setSender(sender);
-        msg2.setReceiver(receiver);
-        messages.add(messageDAO.create(msg2));
-
-        //send a message 3
-        Message msg3 = MessageFactory.createMessage();
-        msg3.setSender(sender);
-        msg3.setReceiver(receiver);
-        messages.add(messageDAO.create(msg3));
-
-        WallBean wallBean = UserHandler.authenticateUser(sender.getEmail(), sender.getPassword());
-
-        Assert.assertEquals("The number of messages have to be 3",3,wallBean.getMessages().size());
-        Assert.assertEquals("sender", wallBean.getMessages().get(0).getSender().getFirstName());*/
 
     }
 }

@@ -1,4 +1,4 @@
-package controllers;
+package ViewModels;
 
 /**
  * Created by dario on 2015-11-11.
@@ -7,6 +7,8 @@ public class UserViewModel {
 
     private String firstName;
     private String lastName;
+
+    private int Id;
 
     public UserViewModel(){
     }
@@ -34,6 +36,14 @@ public class UserViewModel {
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
+    }
+
+    public int getId() {
+        return Id;
+    }
+
+    public void setId(int id) {
+        Id = id;
     }
 
 }

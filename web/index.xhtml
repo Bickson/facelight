@@ -27,8 +27,8 @@
             </b:column>
         </b:column>
         <b:column span="8" id="content">
-            <h3>User Name: #{userController.currentUser.name}</h3>
-            <ui:repeat value="#{userController.wallBean.messages}" var="message">
+            <h3>User Name: #{sessionController.currentUser.name}</h3>
+            <ui:repeat value="#{messagesController.getMessages(sessionController.currentUser)}" var="message">
                 <b:column span="12" styleClass="card">
                     <b:column span="12" style="border-bottom: 2px dashed #888888; padding-bottom:7px;">
                         <b:column span="1">
