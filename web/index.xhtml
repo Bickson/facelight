@@ -27,100 +27,35 @@
             </b:column>
         </b:column>
         <b:column span="8" id="content">
-
-            <b:column span="12" styleClass="card">
-                <b:column span="12" style="border-bottom: 2px dashed #888888; padding-bottom:7px;">
-                    <b:column span="1">
-                        <h:outputText value="From:" styleClass="card_label"></h:outputText>
+            <h3>User Name: #{userController.currentUser.name}</h3>
+            <ui:repeat value="#{userController.wallBean.messages}" var="message">
+                <b:column span="12" styleClass="card">
+                    <b:column span="12" style="border-bottom: 2px dashed #888888; padding-bottom:7px;">
+                        <b:column span="1">
+                            <h:outputText value="From:" styleClass="card_label"/>
+                        </b:column>
+                        <b:column span="11" >
+                            <h:outputText value="#{message.sender.name}" var="raw" styleClass="card_from"/>
+                        </b:column>
                     </b:column>
-                    <b:column span="11" >
-                        <h:outputText value="USER_FRIEND_NAME" styleClass="card_from"></h:outputText>
+                    <b:column span="12" style="padding-top:7px;">
+                        <b:column span="1">
+                            <h:outputText value="Subject:" styleClass="card_label"/>
+                        </b:column>
+                        <b:column span="11">
+                            <h:outputText value="#{message.subject}" styleClass="card_subject"/>
+                        </b:column>
                     </b:column>
-                </b:column>
-                <b:column span="12" style="padding-top:7px;">
-                    <b:column span="1">
-                        <h:outputText value="Subject:" styleClass="card_label"></h:outputText>
-                    </b:column>
-                    <b:column span="11">
-                        <h:outputText value="USER_FRIEND_MESSAGE_SUBJECT" styleClass="card_subject"></h:outputText>
-                    </b:column>
-                </b:column>
-                <b:column span="12" style="padding-top:7px;">
-                    <b:column span="1">
-                        <h:outputText value="Message:" styleClass="card_label"></h:outputText>
-                    </b:column>
-                    <b:column span="11">
-                        <h:outputText value="USER_FRIEND_MESSAGE_CONTENT" styleClass="card_content"></h:outputText>
-                    </b:column>
-                </b:column>
-            </b:column>
-
-            <b:column span="12" styleClass="card">
-                <b:column span="12" style="border-bottom: 2px dashed #888888; padding-bottom:7px;">
-                    <b:column span="1">
-                        <h:outputText value="From:" styleClass="card_label"></h:outputText>
-                    </b:column>
-                    <b:column span="11" >
-                        <h:outputText value="Dario Florez" styleClass="card_from"></h:outputText>
+                    <b:column span="12" style="padding-top:7px;">
+                        <b:column span="1">
+                            <h:outputText value="Message:" styleClass="card_label"/>
+                        </b:column>
+                        <b:column span="11">
+                            <h:outputText value="#{message.content}" styleClass="card_content"/>
+                        </b:column>
                     </b:column>
                 </b:column>
-                <b:column span="12" style="padding-top:7px;">
-                    <b:column span="1">
-                        <h:outputText value="Subject:" styleClass="card_label"></h:outputText>
-                    </b:column>
-                    <b:column span="11">
-                        <h:outputText value="Yo check it out!" styleClass="card_subject"></h:outputText>
-                    </b:column>
-                </b:column>
-                <b:column span="12" style="padding-top:7px;">
-                    <b:column span="1">
-                        <h:outputText value="Message:" styleClass="card_label"></h:outputText>
-                    </b:column>
-                    <b:column span="11">
-                        <h:outputText value="Lorem ipsum dolor sit amet, consectetur
-                        adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                        et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                         Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-                         dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                         proident, sunt in culpa qui officia deserunt mollit anim id est laborum." styleClass="card_content"></h:outputText>
-                    </b:column>
-                </b:column>
-            </b:column>
-
-            <b:column span="12" styleClass="card">
-                <b:column span="12" style="border-bottom: 2px dashed #888888; padding-bottom:7px;">
-                    <b:column span="1">
-                        <h:outputText value="From:" styleClass="card_label"></h:outputText>
-                    </b:column>
-                    <b:column span="11" >
-                        <h:outputText value="Ayman Zalet" styleClass="card_from"></h:outputText>
-                    </b:column>
-                </b:column>
-                <b:column span="12" style="padding-top:7px;">
-                    <b:column span="1">
-                        <h:outputText value="Subject:" styleClass="card_label"></h:outputText>
-                    </b:column>
-                    <b:column span="11">
-                        <h:outputText value="Ey sexyy" styleClass="card_subject"></h:outputText>
-                    </b:column>
-                </b:column>
-                <b:column span="12" style="padding-top:7px;">
-                    <b:column span="1">
-                        <h:outputText value="Message:" styleClass="card_label"></h:outputText>
-                    </b:column>
-                    <b:column span="11">
-                        <h:outputText value="Lorem ipsum dolor sit amet, consectetur
-                        adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                        et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                         Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-                         dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                         proident, sunt in culpa qui officia deserunt mollit anim id est laborum." styleClass="card_content"></h:outputText>
-                    </b:column>
-                </b:column>
-            </b:column>
-
+            </ui:repeat>
         </b:column>
         <b:column span="2" styleClass="padding_col">
             <h:outputText value="Wall" styleClass="description"></h:outputText>
