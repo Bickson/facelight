@@ -40,7 +40,4 @@ public class MessageForm {
         this.type = type;
     }
 
-
-
-
 }

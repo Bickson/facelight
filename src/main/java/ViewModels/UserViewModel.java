@@ -13,7 +13,7 @@ public class UserViewModel {
     public UserViewModel(){
     }
 
-    public UserViewModel(String firstName, String lastName){
+    public UserViewModel(int id, String firstName, String lastName){
         this.firstName = firstName;
         this.lastName = lastName;
     }
