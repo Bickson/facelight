@@ -25,9 +25,17 @@
         </b:column>
         <b:column span="6" styleClass="card" style="padding:20px">
             <h:form>
-                <b:selectOneMenu label="Type of message">
+                <b:selectOneMenu label="From" value="#{messageForm.sender}">
+                    <f:selectItem itemLabel="#{sessionController.currentUser.firstName}" itemValue="#{sessionController.currentUser.id}"/>
+                </b:selectOneMenu>
+                <b:selectOneMenu label="Type of message" value="#{messageForm.type}">
                     <f:selectItem itemLabel="Privat" itemValue="PRIVATE"/>
                     <f:selectItem itemLabel="Publik" itemValue="PUBLIC"/>
+                </b:selectOneMenu>
+                <b:selectOneMenu label="To" value="#{messageForm.receiver}">
+                    <c:forEach var="user" items="#{messagesController.getAllUsers()}">
+                        <f:selectItem itemLabel="#{user.email}" itemValue="#{user.id}"/>
+                    </c:forEach>
                 </b:selectOneMenu>
                 <b:inputText label="Subject" value="#{messageForm.subject}"></b:inputText>
                 <b:inputText label="Content" value="#{messageForm.content}"></b:inputText>

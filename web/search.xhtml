@@ -28,7 +28,7 @@
             </b:inputText>
         </b:column>
     <b:column span="12" id="output">
-        <c:forEach var="name" items="#{search.users}">
+        <c:forEach var="user" items="#{search.users}">
             <b:column span="12" styleClass="card">
                 <b:column span="12">
                     <b:column span="1" style=" margin-left: -15px;">
@@ -38,7 +38,7 @@
                         <h:outputText value="Name:" styleClass="search_card_label"></h:outputText>
                     </b:column>
                     <b:column span="8">
-                        <h:outputText value="#{name}" styleClass="card_from"></h:outputText>
+                        <h:outputText value="#{user.firstName}" styleClass="card_from"></h:outputText>
                     </b:column>
                     <b:column span="1">
                         <b:button outcome="index" value="View" look="primary" size="xs" style="margin-bottom:-5px; width: 100%"></b:button>
