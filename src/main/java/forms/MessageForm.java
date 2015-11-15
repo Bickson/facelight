@@ -15,6 +15,24 @@ public class MessageForm {
     private String subject;
     private String content;
     private MessageType type;
+    private int sender;
+    private int receiver;
+
+    public int getSender() {
+        return sender;
+    }
+
+    public void setSender(int sender) {
+        this.sender = sender;
+    }
+
+    public int getReceiver() {
+        return receiver;
+    }
+
+    public void setReceiver(int receiver) {
+        this.receiver = receiver;
+    }
 
     public String getSubject() {
         return subject;

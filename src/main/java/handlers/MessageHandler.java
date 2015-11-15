@@ -4,6 +4,7 @@ import ViewModels.MessageViewModel;
 import ViewModels.UserViewModel;
 import dao.MessageDAO;
 import dao.UserDAO;
+import forms.MessageForm;
 import models.Message;
 import models.MessageType;
 import models.User;
@@ -57,14 +58,15 @@ public class MessageHandler {
         return userMessages;
     }
 
-    public static boolean createMessage(MessageViewModel message){
+    public static boolean createMessage(MessageForm message){
 
-        User sender = userDAO.getUser(message.getSender().getId());
-        User receiver = userDAO.getUser(message.getReceiver().getId());
+        User sender = userDAO.getUser(message.getSender());
+        User receiver = userDAO.getUser(message.getReceiver());
 
         Message messageNew = new Message();
         messageNew.setSender(sender);
         messageNew.setReceiver(receiver);
+        messageNew.setType(message.getType());
         messageNew.setSubject(message.getSubject());
         messageNew.setContent(message.getContent());
         messageNew.setCreatedAt(new Date());

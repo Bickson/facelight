@@ -4,6 +4,8 @@ import ViewModels.MessageViewModel;
 import ViewModels.UserViewModel;
 import forms.MessageForm;
 import handlers.MessageHandler;
+import handlers.UserHandler;
+import models.User;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
@@ -47,9 +49,18 @@ public class MessagesController {
         // takes a messageForm a sends a messageViewModel
         System.out.println("Subject: " + messageForm.getSubject());
         System.out.println("Content: " + messageForm.getContent());
+        System.out.println("Type: " + messageForm.getType());
+        System.out.println("Sender " + messageForm.getSender());
+        System.out.println("receiver " + messageForm.getReceiver());
+
 
         MessageHandler.createMessage(messageForm);
 
         return "index";
+    }
+
+    public ArrayList<User> getAllUsers() {
+        ArrayList<User> users = (ArrayList<User>) UserHandler.getAllUsers();
+        return users;
     }
 }

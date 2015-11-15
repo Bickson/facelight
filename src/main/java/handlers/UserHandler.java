@@ -53,4 +53,9 @@ public class UserHandler {
 
     }
 
+    public static Collection getAllUsers(){
+        Collection<User> users = userDAO.listUsers();
+        return users;
+    }
+
 }
