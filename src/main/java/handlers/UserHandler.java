@@ -44,9 +44,19 @@ public class UserHandler {
     }
 
     //Return ArrayList<UseViewModel>
-    public static Collection getUserByName(String query){
+    public static ArrayList<UserViewModel>getUserByName(String query){
         //Fix here
-        return userDAO.listUserByName(query);
+        Collection<User> users = userDAO.listUserByName(query);
+        ArrayList<UserViewModel> usersModelView = new ArrayList<>();
+        users.forEach(m -> usersModelView.add(
+                new UserViewModel(m.getId(), m.getFirstName(), m.getLastName())));
+
+        return usersModelView;
+    }
+
+    public static Collection getAllUsers(){
+        Collection<User> users = userDAO.listUsers();
+        return users;
     }
 
     public static void getUserProfile(UserViewModel user){

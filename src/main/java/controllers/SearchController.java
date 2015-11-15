@@ -1,5 +1,6 @@
 package controllers;
 
+import ViewModels.UserViewModel;
 import handlers.UserHandler;
 import models.User;
 
@@ -16,13 +17,13 @@ import java.util.Collection;
 public class SearchController {
 
     private String query;
-    private ArrayList<String> users = new ArrayList<String>();
+    private ArrayList<UserViewModel> users = new ArrayList<>();
 
-    public ArrayList<String> getUsers() {
+    public ArrayList<UserViewModel> getUsers() {
         return users;
     }
 
-    public void setUsers(ArrayList<String> users) {
+    public void setUsers(ArrayList<UserViewModel> users) {
         this.users = users;
     }
 
@@ -35,6 +36,7 @@ public class SearchController {
     }
 
     public String search(){
+<<<<<<< HEAD
 
         // A check if query is null || "" || " " is needed here to avoid unnecessary queries!
         Collection<User> col = UserHandler.getUserByName(query);
@@ -43,6 +45,11 @@ public class SearchController {
         if (col != null) {
             col.forEach(user -> users.add(user.getFirstName() + " " + user.getLastName()));
         }
+=======
+        users = UserHandler.getUserByName(query);
+        users.forEach(item -> System.out.println(item.getFirstName()));
+
+>>>>>>> github/master
         return "search";
     }
 
