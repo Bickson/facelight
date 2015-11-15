@@ -49,6 +49,11 @@ public class UserHandler {
         return userDAO.listUserByName(query);
     }
 
+    public static Collection getAllUsers(){
+        Collection<User> users = userDAO.listUsers();
+        return users;
+    }
+
     public static void getUserProfile(UserViewModel user){
 
     }
