@@ -35,10 +35,12 @@ public class SearchController {
     }
 
     public String search(){
+
+        // A check if query is null || "" || " " is needed here to avoid unnecessary queries!
         Collection<User> col = UserHandler.getUserByName(query);
         col.forEach(item -> System.out.println(item.getFirstName()));
 
-        if(col != null) {
+        if (col != null) {
             col.forEach(user -> users.add(user.getFirstName() + " " + user.getLastName()));
         }
         return "search";

@@ -2,9 +2,11 @@ package controllers;
 
 import ViewModels.MessageViewModel;
 import ViewModels.UserViewModel;
+import forms.MessageForm;
 import handlers.MessageHandler;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import java.util.ArrayList;
 
 /**
@@ -13,11 +15,22 @@ import java.util.ArrayList;
 @ManagedBean
 public class MessagesController {
 
+    @ManagedProperty(value="#{messageForm}")
+    private MessageForm messageForm;
+
     private ArrayList<MessageViewModel> messages;
+
+    public MessageForm getMessageForm() {
+        return messageForm;
+    }
+
+    public void setMessageForm(MessageForm messageForm) {
+        this.messageForm = messageForm;
+    }
 
     public ArrayList<MessageViewModel> getPrivateMessages(UserViewModel currentUser){
 
-        return messages;
+        return MessageHandler.getAllMessages(currentUser.getId());
     }
 
     public ArrayList<MessageViewModel> getMessages(UserViewModel currentUser)
@@ -30,7 +43,13 @@ public class MessagesController {
         this.messages = messages;
     }
 
-    public void createUserMessage(MessageViewModel message){
+    public String createUserMessage(){
+        // takes a messageForm a sends a messageViewModel
+        System.out.println("Subject: " + messageForm.getSubject());
+        System.out.println("Content: " + messageForm.getContent());
 
+        MessageHandler.createMessage(messageForm);
+
+        return "index";
     }
 }

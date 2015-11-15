@@ -24,12 +24,15 @@
         <b:column span="3">
         </b:column>
         <b:column span="6" styleClass="card" style="padding:20px">
-            <b:selectOneMenu label="Type">
-                <f:selectItem itemLabel="Privat" itemValue="PRIVATE"/>
-                <f:selectItem itemLabel="Publik" itemValue="PUBLIC"/>
-            </b:selectOneMenu>
-            <b:inputText label="Subject"></b:inputText>
-            <b:inputText label="Content"></b:inputText>
+            <h:form>
+                <b:selectOneMenu label="Type of message">
+                    <f:selectItem itemLabel="Privat" itemValue="PRIVATE"/>
+                    <f:selectItem itemLabel="Publik" itemValue="PUBLIC"/>
+                </b:selectOneMenu>
+                <b:inputText label="Subject" value="#{messageForm.subject}"></b:inputText>
+                <b:inputText label="Content" value="#{messageForm.content}"></b:inputText>
+                <b:commandButton value="Send" look="primary" style="width: 100%;" action="#{messagesController.createUserMessage}" />
+            </h:form>
         </b:column>
         <b:column span="3">
         </b:column>
