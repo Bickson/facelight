@@ -43,8 +43,14 @@ public class UserHandler {
         return userDAO.create(user);
     }
 
+    //Return ArrayList<UseViewModel>
     public static Collection getUserByName(String query){
+        //Fix here
         return userDAO.listUserByName(query);
+    }
+
+    public static void getUserProfile(UserViewModel user){
+
     }
 
 }
