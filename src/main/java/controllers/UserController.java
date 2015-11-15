@@ -1,5 +1,6 @@
 package controllers;
 
+import ViewModels.UserViewModel;
 import forms.UserForm;
 import handlers.UserHandler;
 
@@ -36,6 +37,10 @@ public class UserController {
             return "login";
         }
         return "register";
+    }
+
+    public void getProfile(UserViewModel user){
+
     }
 
 }

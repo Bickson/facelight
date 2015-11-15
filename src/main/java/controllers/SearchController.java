@@ -1,12 +1,10 @@
 package controllers;
 
-import dao.UserDAO;
 import handlers.UserHandler;
 import models.User;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import javax.faces.bean.SessionScoped;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -15,7 +13,7 @@ import java.util.Collection;
  */
 @ManagedBean(name="search")
 @RequestScoped
-public class SearchBean {
+public class SearchController {
 
     private String query;
     private ArrayList<String> users = new ArrayList<String>();

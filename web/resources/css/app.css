@@ -51,12 +51,16 @@ body{
     box-shadow: 1px 3px 4px #888888;
 }
 
+.profile_name{
+    text-align: center;
+}
+
 #sidebar{
     height: calc(100% - 50px);
     padding-top: 20px;
 }
 #sidebar_buttons{
-    padding-top: 20px;
+    border-top: 2px dashed lightgrey;
 }
 
 #sidebar_buttons li a{

@@ -15,24 +15,11 @@
         <p>#{request.getRequestURL().toString().split("/")[3]}</p>
     </b:column>
     <b:column span="4">
-        <b:column span="12">
-            <h:graphicImage value="resources/images/facelight_logo2.png" style="width: 100%;"/>
-        </b:column>
-        <b:column span="12" id="login_box">
-            <h:head>Registerform</h:head>
-            <h:form>
-                <b:inputText value="#{userForm.firstName}">Förnamn</b:inputText>
-                <b:inputText value="#{userForm.lastName}">Efternan</b:inputText>
-                <b:inputText value="#{userForm.email}">Email</b:inputText>
-                <b:inputSecret value="#{userForm.password}">Lösenord</b:inputSecret>
-                <b:inputSecret value="#{userForm.passwordConfirmation}">Lösenord igen</b:inputSecret>
-                <b:commandButton value="Register" look="primary" style="width:100%;" action="#{userController.registerUser}"/>
-                <h:link outcome="login">Back</h:link>
-            </h:form>
-        </b:column>
+        <ui:insert name="registerForm">
+            <ui:include src="partials/registerForm.xhtml" />
+        </ui:insert>
     </b:column>
     <b:column span="4">
-        PADDING COL
     </b:column>
 </h:body>
 </html>

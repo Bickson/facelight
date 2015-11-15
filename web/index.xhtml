@@ -15,19 +15,11 @@
             <h:graphicImage value="resources/images/facelight_logo2.png" styleClass="bar_logo"/>
         </b:column>
         <b:column span="2" id="sidebar">
-            <b:column styleClass="profile_pic">
-            <h:graphicImage value="resources/images/profile.jpg" style="width: 100%;"/>
-            <b:navbarLinks id="sidebar_buttons" style="box-shadow: 0px 3px 3px #888888;">
-                <b:navLink value="Sök efter person" outcome="search" iconAwesome="search"></b:navLink>
-                <b:navLink value="Mina Vänner" href="#" iconAwesome="group"></b:navLink>
-                <b:navLink value="Mina Meddelande" href="#" iconAwesome="envelope"></b:navLink>
-                <b:navLink value="Nytt Meddelande" outcome="messageForm" iconAwesome="pencil"></b:navLink>
-                <b:navLink value="Logga ut" href="#" iconAwesome="chevron-right" size="2x"></b:navLink>
-            </b:navbarLinks>
-            </b:column>
+            <ui:insert name="menu">
+                <ui:include src="partials/sideMenu.xhtml" />
+            </ui:insert>
         </b:column>
         <b:column span="8" id="content">
-            <h3>User Name: #{sessionController.currentUser.name}</h3>
             <ui:repeat value="#{messagesController.getMessages(sessionController.currentUser)}" var="message">
                 <b:column span="12" styleClass="card">
                     <b:column span="12" style="border-bottom: 2px dashed #888888; padding-bottom:7px;">

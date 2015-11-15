@@ -15,6 +15,11 @@ public class MessagesController {
 
     private ArrayList<MessageViewModel> messages;
 
+    public ArrayList<MessageViewModel> getPrivateMessages(UserViewModel currentUser){
+
+        return messages;
+    }
+
     public ArrayList<MessageViewModel> getMessages(UserViewModel currentUser)
     {
         //get from database
@@ -25,5 +30,7 @@ public class MessagesController {
         this.messages = messages;
     }
 
+    public void createUserMessage(MessageViewModel message){
 
+    }
 }
