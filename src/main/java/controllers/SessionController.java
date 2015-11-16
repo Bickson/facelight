@@ -18,8 +18,20 @@ public class SessionController {
     @ManagedProperty(value="#{loginForm}")
     private LoginForm loginForm;
     private UserViewModel currentUser;
+    private UserViewModel remoteUser;
+
+    public SessionController(){
+        currentUser = new UserViewModel();
+        remoteUser = new UserViewModel();
+    }
 
     //Getter & Setter
+    public UserViewModel getRemoteUser() {
+        return remoteUser;
+    }
+    public void setRemoteUser(UserViewModel remoteUser) {
+        this.remoteUser = remoteUser;
+    }
     public LoginForm getLoginForm() {
         return loginForm;
     }
@@ -40,7 +52,6 @@ public class SessionController {
     public String doLogin(){
         currentUser = UserHandler.authenticateUser(loginForm.getEmail(), loginForm.getPassword());
         if(currentUser != null){
-            //wallBean.setMessages(MessageHandler.getAllMessages(currentUser.getId()));
             return "index";
         }
         return "register";

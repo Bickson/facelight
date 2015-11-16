@@ -2,10 +2,12 @@ package controllers;
 
 import ViewModels.UserViewModel;
 import forms.UserForm;
+import handlers.MessageHandler;
 import handlers.UserHandler;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.SessionScoped;
 
 /**
  * Created by dario on 2015-11-11.
@@ -15,11 +17,20 @@ public class UserController {
 
     @ManagedProperty(value="#{userForm}")
     private UserForm userForm;
+    @ManagedProperty(value ="#{sessionController}")
+    private SessionController session;
 
     public UserController(){
-
     }
 
+
+    public SessionController getSession() {
+        return session;
+    }
+
+    public void setSession(SessionController session) {
+        this.session = session;
+    }
 
     public UserForm getUserForm() {
         return userForm;
@@ -39,8 +50,9 @@ public class UserController {
         return "register";
     }
 
-    public void getProfile(UserViewModel user){
-
+    public String userProfile(UserViewModel remoteUser){
+        session.setRemoteUser(remoteUser);
+        return "user_profile";
     }
 
 }

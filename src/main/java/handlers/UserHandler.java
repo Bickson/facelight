@@ -59,8 +59,4 @@ public class UserHandler {
         return users;
     }
 
-    public static void getUserProfile(UserViewModel user){
-
-    }
-
 }
