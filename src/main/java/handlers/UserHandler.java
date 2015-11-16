@@ -59,13 +59,5 @@ public class UserHandler {
         return users;
     }
 
-    public static void getUserProfile(UserViewModel user){
-
-    }
-
-    public static Collection getAllUsers(){
-        Collection<User> users = userDAO.listUsers();
-        return users;
-    }
 
 }

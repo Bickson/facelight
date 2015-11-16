@@ -8,12 +8,13 @@ public class UserViewModel {
     private String firstName;
     private String lastName;
 
-    private int Id;
+    private int id;
 
     public UserViewModel(){
     }
 
     public UserViewModel(int id, String firstName, String lastName){
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
     }
@@ -39,11 +40,11 @@ public class UserViewModel {
     }
 
     public int getId() {
-        return Id;
+        return id;
     }
 
     public void setId(int id) {
-        Id = id;
+        this.id = id;
     }
 
 }
