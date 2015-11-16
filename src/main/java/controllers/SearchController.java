@@ -6,6 +6,7 @@ import models.User;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -13,7 +14,7 @@ import java.util.Collection;
  * Created by johan on 10/11/15.
  */
 @ManagedBean(name="search")
-@RequestScoped
+@SessionScoped
 public class SearchController {
 
     private String query;
@@ -38,9 +39,6 @@ public class SearchController {
     public String search(){
         users = UserHandler.getUserByName(query);
         users.forEach(item -> System.out.println(item.getFirstName()));
-
         return "search";
     }
-
-
 }

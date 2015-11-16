@@ -7,8 +7,7 @@ import handlers.UserHandler;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
-import javax.faces.context.ExternalContext;
-import javax.faces.context.FacesContext;
+import javax.faces.bean.SessionScoped;
 
 /**
  * Created by dario on 2015-11-11.
@@ -18,6 +17,20 @@ public class UserController {
 
     @ManagedProperty(value="#{userForm}")
     private UserForm userForm;
+    @ManagedProperty(value ="#{sessionController}")
+    private SessionController session;
+
+    public UserController(){
+    }
+
+
+    public SessionController getSession() {
+        return session;
+    }
+
+    public void setSession(SessionController session) {
+        this.session = session;
+    }
 
     public UserForm getUserForm() {
         return userForm;
@@ -37,14 +50,10 @@ public class UserController {
         return "register";
     }
 
-    public String getUserProfile(){
-        int userProfileId = Integer.parseInt(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("id"));
 
-        System.out.println("USERPROFILEID ==============" + userProfileId);
-
-        MessageHandler.getAllMessages(userProfileId);
-
-        return "userProfile";
+    public String userProfile(UserViewModel remoteUser){
+        session.setRemoteUser(remoteUser);
+        return "user_profile";
     }
 
 
